@@ -1,0 +1,46 @@
+<div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>Azonosito</th>
+          <th>Név</th>
+          <th>Muveletek</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let adat of adatok ;let i= index">
+          <td>{{ adat.id }}</td>
+          <td>{{ adat.name }}</td>
+          <td id="rendez">
+            <button (click)="torlesEvent(adat.id)">Törlés</button>
+            <button (click)="valtoztatEvent(adat.id)">Változtat</button>
+            <a [routerLink]="['/kivalaszt', adat.id]">Megjelenít</a>
+          </td>
+        </tr>
+
+
+      </tbody>
+    </table>
+
+  <div class="formContainer">
+    <form >
+      <h2>Új adat hozzáadása</h2>
+
+      <div>
+        <input type="number" [disabled]="idMezoKikapcsolasa" name="name" [(ngModel)]="idInput" placeholder="Id">
+      </div>
+
+      <div>
+        <input type="text" name="id" [(ngModel)]="nameInput" placeholder="Name">
+      </div>
+
+    </form>
+
+    <div class="buttons">
+        <button (click)="hozzadEvent()" *ngIf="frissitesGomb == false">Hozzáad</button>
+        <button (click)="frissitesEvent()" *ngIf="frissitesGomb == true">Frissítés</button>
+    </div>
+  </div>
+</div>
+

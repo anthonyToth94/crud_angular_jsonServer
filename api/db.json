@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "id": 2,
+      "name": "Nagy Emese"
+    },
+    {
+      "id": 3,
+      "name": "Kis Gábor"
+    },
+    {
+      "id": 4,
+      "name": "Kis Ernő"
+    },
+    {
+      "id": 5,
+      "name": "Nagy Feri"
+    }
+  ]
+}
