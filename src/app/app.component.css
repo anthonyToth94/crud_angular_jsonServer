@@ -1,0 +1,33 @@
+header, footer{
+    height:50px;
+    padding:10px;
+
+    background: rgb(105, 105, 107);
+    text-align: center;
+    color:white;
+
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header{
+    justify-content: flex-end;
+}
+
+ul{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+ul li{
+    margin-right: 20px;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+    height:90vh;
+}

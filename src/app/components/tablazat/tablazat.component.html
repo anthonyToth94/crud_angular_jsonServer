@@ -1,0 +1,50 @@
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Név</th>
+                <th>Beosztás</th>
+                <th>Email</th>
+                <th>Funkciók</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            <tr *ngFor="let adat of adatok; let i = index">
+                <td>{{adat.id}}</td>
+                <td>{{adat.keresztnev}}</td>
+                <td>{{adat.beosztas}}</td>
+                <td>{{adat.email}}</td>
+                <td>{{adat.keresemailztnev}}</td>
+                <td>
+                    <button (click)="szerkesztesEvent(adat.id)">Szerkesztés</button>
+                    <button (click)="torlesUserEvent(adat.id)">Törlés</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="formOuter" *ngIf="updateFormMegjelenese">
+        <form [formGroup]="szerkesztesForm" (submit)="modositasForm()">
+            <h3>Módosítás</h3>
+       
+            <label for="keresztnev">Keresztnév:</label>
+            <input type="text" id="keresztnev" formControlName="keresztnev">
+
+            <label for="vezeteknev">Email:</label>
+            <input type="text" id="email" formControlName="email">
+          
+             <!-- Új sor-->
+            <label>
+                Beosztás<span>*</span>:
+                <select formControlName="position">
+                <option *ngFor="let beoszt of atvettObject" [value]="beoszt.value">{{ beoszt.label }}</option>
+                </select>
+            </label>
+           
+          
+            <button>Mentés</button>
+          </form>
+    </div>
+</div>

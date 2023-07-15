@@ -1,0 +1,51 @@
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+a{
+    background-color: rgb(121, 65, 65);
+    padding:5px;
+    border:none;
+}
+
+ul li{
+    padding:10px;
+}
+
+span{
+    font-size:20px;
+    font-weight: bold;
+    color:rgb(189, 18, 18);
+}
+.error{
+    color:rgb(199, 33, 33);
+}
+form h3{
+    text-align: center;
+    width:100%;
+}
+
+input[type="text"],input[type="email"],input[type="number"]{
+    padding:10px;
+    font-size:16px;
+}
+
+select{
+    padding:10px;
+}
+
+input[type="checkbox"],input[type="radio"]{
+    width:15px;
+    height:15px;
+}
+
+hr{
+    width:100%;
+    margin:10px 0px;
+}
+
+#keszsegButton{
+    margin-bottom:10px;
+}

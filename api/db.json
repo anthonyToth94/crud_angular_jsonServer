@@ -1,0 +1,91 @@
+{
+  "users": [
+    {
+      "id": "2a12187a-c23f-43c1-9812-f4e6dff6f212",
+      "keresztnev": "Péter",
+      "vezeteknev": "Kovács",
+      "eletkor": 32,
+      "email": "peterkovacs@example.com",
+      "beosztas": "Tesztelő",
+      "nem": "Férfi",
+      "utca": "Petőfi utca 2.",
+      "varos": "Debrecen",
+      "iranyitoszam": 2222,
+      "keszsegek": ["Java", "JUnit", "Selenium", "Git"]
+    },
+    {
+      "id": "1a12187a-c23f-43c1-9812-f4e6dff6f252",
+      "keresztnev": "Anna",
+      "vezeteknev": null,
+      "eletkor": null,
+      "email": "annatoth@example.com",
+      "beosztas": "Grafikus",
+      "nem": null,
+      "utca": null,
+      "varos": null,
+      "iranyitoszam": null,
+      "keszsegek": []
+    },
+    {
+      "id": "1a12127a-c23f-43c1-9812-f4e6dff6f252",
+      "keresztnev": "Antal",
+      "vezeteknev": null,
+      "eletkor": null,
+      "email": "annatoth@example.com",
+      "beosztas": "Tesztelő",
+      "nem": null,
+      "utca": null,
+      "varos": null,
+      "iranyitoszam": null,
+      "keszsegek": []
+    },
+    {
+      "id": "2a12187a-c23f-43c1-9812-f4e6dff6f212",
+      "keresztnev": "Péter",
+      "vezeteknev": "Kovács",
+      "eletkor": 32,
+      "email": "peterkovacs@example.com",
+      "beosztas": "Tesztelő",
+      "nem": "Férfi",
+      "utca": "Petőfi utca 2.",
+      "varos": "Debrecen",
+      "iranyitoszam": 2222,
+      "keszsegek": ["Java", "JUnit", "Selenium", "Git"]
+    },
+    {
+      "id": "1a12187a-c23f-43c1-9812-f4e6dff6f252",
+      "keresztnev": "Anna",
+      "vezeteknev": null,
+      "eletkor": null,
+      "email": "annatoth@example.com",
+      "beosztas": "Grafikus",
+      "nem": null,
+      "utca": null,
+      "varos": null,
+      "iranyitoszam": null,
+      "keszsegek": []
+    }
+  ],
+  "beosztas": [
+    {
+      "value": "Designer",
+      "label": "Designer"
+    },
+    {
+      "value": "Projektvezető",
+      "label": "Projektvezető"
+    },
+    {
+      "value": "Grafikus",
+      "label": "Grafikus"
+    },
+    {
+      "value": "Fejlesztő",
+      "label": "Fejlesztő"
+    },
+    {
+      "value": "Tesztelő",
+      "label": "Tesztelő"
+    }
+  ]
+}

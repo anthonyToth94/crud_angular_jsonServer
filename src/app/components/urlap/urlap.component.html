@@ -1,0 +1,154 @@
+
+    <form [formGroup]="urlapForm">
+        <h3>Vigyél fel adatokat!</h3>
+        <br>
+
+        <!-- Új sor-->
+        <label>
+            Keresztnév<span>*</span>: 
+            <input type="text" formControlName="firstName">
+        </label>
+        <!-- hibák -->
+        <div class="error" *ngIf="getError('firstName', 'required')">
+            Keresztnév megadása kötelező.
+        </div>
+        <div class="error" *ngIf="getError('firstName', 'maxlength') as err">
+            Max karakterszám {{err.requiredLength}} beírt: {{err.actualLength}}
+        </div>
+        <br>
+
+        <!-- Új sor-->
+        <label>
+            Vezetéknév<span>*</span>:
+            <input type="text" formControlName="lastName">
+        </label>
+        <!-- hibák -->
+        <div class="error" *ngIf="getError('lastName', 'required')">
+            Vezetéknév megadása kötelező.
+        </div>
+        <div class="error" *ngIf="getError('lastName', 'maxlength') as err">
+            Max karakterszám {{err.requiredLength}} beírt: {{err.actualLength}}
+        </div>
+        <br>
+
+        <!-- Új sor-->
+        <label>
+            Életkor<span>*</span>:
+            <input type="number" formControlName="age">
+        </label>                            
+        <!-- hibák -->                     <!--Saját validátor-->
+        <div class="error" *ngIf="getError('age', 'range') as err">
+            Életkor {{err.min}} és {{err.max}} közötti érték kell legyen. Megadva: {{err.actual}}
+        </div>
+        <br>
+
+        <!-- Új sor-->
+        <label>
+            Email<span>*</span>:
+        <input type="email" formControlName="email">
+        </label>
+        <!-- Hibák -->
+        <div class="error" *ngIf="getError('email', 'taken')">
+           Email cím foglalt.
+        </div>
+        <div class="error" *ngIf="getError('email', 'required')">
+            Email cím megadása kötelező.
+         </div>
+         <div class="error" *ngIf="getError('email', 'email')">
+            Hibás email cím.
+         </div>
+        <hr>
+
+        <!-- Új sor-->
+        <label>
+            Beosztás<span>*</span>:
+            <select formControlName="position">
+              <option *ngFor="let beoszt of beosztas; let i = index;" [value]="beoszt.value">{{ beoszt.label }}</option>
+            </select>
+          </label>
+          <!-- Hibák -->
+          <div class="error" *ngIf="getError('position', 'required')">
+            Beosztás kitöltése kötelező.
+         </div>
+        <hr>
+
+        <!-- Új sor-->
+        <div>
+            Nem:
+            <br>
+            <label>
+                Nő
+                <input type="radio" value="Nő" formControlName="gender">
+            </label>
+            <label>
+                Férfi
+                <input type="radio" value="Férfi" formControlName="gender">
+            </label>
+        </div>
+        <hr>
+
+        <!-- Új sor-->
+        <div>
+            <h2>Cím</h2>
+            <label>
+                Utca<span>*</span>:
+                <input type="text" formControlName="street">
+            </label>
+            <!-- hibák -->
+            <div class="error" *ngIf="getError('street', 'required')">
+                Utca megadása kötelező.
+            </div>
+            <br>
+
+            <label>
+                Város<span>*</span>:
+                <input type="text" formControlName="city">
+            </label>
+            <!-- hibák -->
+            <div class="error" *ngIf="getError('city', 'required')">
+                Város megadása kötelező.
+            </div>
+            <br>
+
+            <label>
+                Irányítószám<span>*</span>:
+                <input type="number" formControlName="zip">
+            </label>
+             <!-- hibák -->
+             <div class="error" *ngIf="getError('zip', 'required')">
+                Irányítószám megadása kötelező.
+            </div>
+            <div class="error" *ngIf="!getError('zip', 'required') && getError('zip', 'range') as err">
+                Irányítószámnak {{err.min}} és {{err.max}} közötti érték kell legyen. Megadva: {{err.actual}}
+            </div>
+        </div>
+        <hr>
+
+        <!-- Új sor-->
+        <div>
+            <h2>Készségek</h2>
+            <button id="keszsegButton" type="button" (click)="addSkills(inputField)">+ Új hozzáadása</button>
+            <ul>
+                <li *ngFor="let skill of skills.controls; let i = index">
+                    {{ skill.value }}
+                    <a id="deleteGomb" (click)="removeSkills(i)"> X </a>
+                </li>
+            </ul>
+            <div>
+                <input type="text" #inputField>
+            </div>
+        </div>
+        <hr>
+
+        <!-- Új sor-->
+        <label>
+            Az adatok a valóságnak megfelelnek <span>*</span>:
+            <input type="checkbox" formControlName="isAccepted">
+        </label>
+         <!-- hibák -->
+
+        <div *ngIf="formErrorMessage" class="error">Kérem töltse ki a mezőket!</div>
+        <button type="submit" (click)="addUserEvent()">
+            Küldés
+        </button>
+    </form>
