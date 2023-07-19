@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { UserModel } from '../models/user.model';
+import { IBeosztas } from '../models/beosztas.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +15,14 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getBeosztas(){
-    return this.http.get(this.beosztasURL);
+  getBeosztas(): Observable<IBeosztas[]> {
+    //Hibakezelést kihoztam a komponensből a servicebe, hogy ne kelljen mindenhol kezelni. 
+    // Így a komponensben csak tap és feliratkozas marad.
+    return this.http.get<IBeosztas[]>(this.beosztasURL).pipe(
+      catchError(err => {
+        return throwError(() => new Error(err.message));
+      })
+    );
   }
 
   //Http kérés, esemény, Adatbázis lekérdezés, Animáció/időzítés OBSERVABLE!

@@ -1,10 +1,11 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, ValidatorFn,AsyncValidatorFn, FormArray } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { catchError, delay, map, of, switchMap, tap } from 'rxjs';
+import { Subscription, catchError, delay, map, of, switchMap, tap } from 'rxjs';
 import { UserModel } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 import { v4 as uuidv4, validate } from 'uuid';
+import { IBeosztas } from 'src/app/models/beosztas.model';
 
 function rangeValidator(min: number, max: number): ValidatorFn{
   return ( (control) =>{
@@ -48,14 +49,14 @@ function emailTakenValidator(http:HttpClient) : AsyncValidatorFn{
   styleUrls: ['./urlap.component.css']
 })
 
-export class UrlapComponent implements OnInit {
+export class UrlapComponent implements OnInit, OnDestroy {
   
   //Globális adatok
   urlapForm  : FormGroup;
-
+  subscriptions: Subscription[] = [];
   //select option elemei HTML -hez
-  @Output() beosztasKuldese : EventEmitter <{ value: string, label: string }[]> = new EventEmitter();
-  beosztas: { value: string, label: string }[] = [];
+  @Output() beosztasKuldese: EventEmitter<IBeosztas[]> = new EventEmitter();
+  beosztas: IBeosztas[] = [];
   
   //tablazatnak
   @Output() passzoltErtek : EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -105,6 +106,9 @@ export class UrlapComponent implements OnInit {
     this.getBeosztas();
     
   }
+  ngOnDestroy(): void {
+    this.subscriptions.forEach( sub => sub.unsubscribe());
+  }
 
 
   //--- FORM ---
@@ -141,18 +145,16 @@ export class UrlapComponent implements OnInit {
 
   //-- CRUD ---
   getBeosztas(): void {
-    this.userService.getBeosztas()
-      .pipe(
-        tap((adatok) => {
-          this.beosztas = adatok as { value: string, label: string }[];
+    this.subscriptions.push(this.userService.getBeosztas()
+        .pipe(
+          tap((adatok: IBeosztas[]) => {
+            this.beosztas = adatok;
+          })
+        ).subscribe( (response) => {
+          this.beosztasKuldese.emit(this.beosztas);
+          // console.log(response);
         })
-      ).subscribe( (response) => {
-        this.beosztasKuldese.emit(this.beosztas);
-        console.log(response);
-      },
-      (error) => {
-        console.error(error);
-      });
+    );
   }
 
   addUserEvent() : void{
