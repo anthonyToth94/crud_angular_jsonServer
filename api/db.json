@@ -11,7 +11,12 @@
       "utca": "Petőfi utca 2.",
       "varos": "Debrecen",
       "iranyitoszam": 2222,
-      "keszsegek": ["Java", "JUnit", "Selenium", "Git"]
+      "keszsegek": [
+        "Java",
+        "JUnit",
+        "Selenium",
+        "Git"
+      ]
     },
     {
       "id": "1a12187a-c23f-43c1-9812-f4e6dff6f252",
@@ -50,7 +55,12 @@
       "utca": "Petőfi utca 2.",
       "varos": "Debrecen",
       "iranyitoszam": 2222,
-      "keszsegek": ["Java", "JUnit", "Selenium", "Git"]
+      "keszsegek": [
+        "Java",
+        "JUnit",
+        "Selenium",
+        "Git"
+      ]
     },
     {
       "id": "1a12187a-c23f-43c1-9812-f4e6dff6f252",
@@ -63,6 +73,87 @@
       "utca": null,
       "varos": null,
       "iranyitoszam": null,
+      "keszsegek": []
+    },
+    {
+      "id": "ef6aa25d-0f16-4612-9ea7-a31278e59302",
+      "keresztnev": "Antal",
+      "vezeteknev": "Svec",
+      "eletkor": 21,
+      "email": "test@gmail.com",
+      "beosztas": "Fejlesztő",
+      "nem": "Férfi",
+      "utca": "test",
+      "varos": "test",
+      "iranyitoszam": 3333,
+      "keszsegek": [
+        "Hello",
+        "Szia"
+      ]
+    },
+    {
+      "id": "aaf255a4-49d0-4d15-840f-84180b8997e7",
+      "keresztnev": "Anti",
+      "vezeteknev": "",
+      "eletkor": "",
+      "email": "test@gmail.com",
+      "beosztas": "Grafikus",
+      "nem": "",
+      "utca": "",
+      "varos": "",
+      "iranyitoszam": "",
+      "keszsegek": []
+    },
+    {
+      "id": "817e7233-82c9-438e-abc4-edd231f4d08a",
+      "keresztnev": "test",
+      "vezeteknev": "asdf",
+      "eletkor": 22,
+      "email": "asd@gmail.com",
+      "beosztas": "Designer",
+      "nem": "Férfi",
+      "utca": "adsf",
+      "varos": "asdf",
+      "iranyitoszam": 2332,
+      "keszsegek": []
+    },
+    {
+      "id": "cf840b2a-8441-4737-94ac-013f35346731",
+      "keresztnev": "asdf",
+      "vezeteknev": "adsf",
+      "eletkor": 33,
+      "email": "anton.svec13@gmail.com",
+      "beosztas": "Designer",
+      "nem": "Férfi",
+      "utca": "asdf",
+      "varos": "asdf",
+      "iranyitoszam": 1111,
+      "keszsegek": []
+    },
+    {
+      "id": "ecf761a5-2ddf-4773-9da6-02ffaa3d9fe2",
+      "keresztnev": "test2",
+      "vezeteknev": "test2",
+      "eletkor": 22,
+      "email": "test@gmail.com",
+      "beosztas": "Designer",
+      "nem": "Férfi",
+      "utca": "adsf",
+      "varos": "fasafs",
+      "iranyitoszam": 2244,
+      "keszsegek": []
+    },
+    {
+      "id": "be4b886c-c2ff-489d-90ef-9561d90ef48f",
+      "keresztnev": "ads",
+      "vezeteknev": "asdf",
+      "eletkor": 22,
+      "email": "adsf@gmail.com",
+      "beosztas": "Designer",
+      "nem": "Férfi",
+      "utca": "asdf",
+      "varos": "asdf",
+      "iranyitoszam": 2333,
       "keszsegek": []
     }
   ],

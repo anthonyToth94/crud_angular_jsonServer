@@ -59,10 +59,11 @@ export class TablazatComponent implements OnInit, OnChanges{
 
   //Frissítene, ha müködne minden alkalommal 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['atvettErtek'] && changes['atvettErtek'].currentValue == false) {
-      this.lekredezes();
-      this.atvettErtek = false;
-    }
+    console.log("tablazat on changes " + changes);
+    // if (changes['atvettErtek'] && changes['atvettErtek'].currentValue == false) {
+    this.lekredezes();
+    this.atvettErtek = false;
+    // }
   }
 
   //Függvény select optiont elemei 
@@ -73,6 +74,7 @@ export class TablazatComponent implements OnInit, OnChanges{
 
    //Fuggvenyek -- TÁBLÁZATHOZ --
    lekredezes(): void {
+    console.log("lekredezes")
     this.userService.getUsers()
       .pipe(
         tap((adatok) => {

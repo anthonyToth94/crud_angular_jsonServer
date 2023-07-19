@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   templateUrl: './lekerdezes.component.html',
   styleUrls: ['./lekerdezes.component.css']
 })
-export class LekerdezesComponent{
+export class LekerdezesComponent implements OnInit, OnChanges {
 
   passzoltErtek : boolean = false;
   passzoltObject : any;
@@ -14,6 +14,14 @@ export class LekerdezesComponent{
   parentFunction(booleanErtek : any)
   {
     this.passzoltErtek = booleanErtek;
+    console.log("parentFunction: " + booleanErtek);
+  }
+
+  ngOnInit(): void {
+      
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+      console.log("changes: " + changes);
   }
 
   parentFunction2(object : any)
