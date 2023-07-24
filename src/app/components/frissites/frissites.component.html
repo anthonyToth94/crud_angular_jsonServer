@@ -1,0 +1,20 @@
+<div class="formOuter" *ngIf="triggerFromTablazat">
+    <form [formGroup]="szerkesztesForm" (submit)="modositasForm()">
+        <h3>Módosítás</h3>
+   
+        <label for="keresztnev">Keresztnév:</label>
+        <input type="text" id="keresztnev" formControlName="keresztnev">
+
+        <label for="vezeteknev">Email:</label>
+        <input type="text" id="email" formControlName="email">
+      
+         <!-- Új sor-->
+        <label>
+            Beosztás<span>*</span>:
+            <select formControlName="position">
+            <option *ngFor="let beoszt of selectFromTablazat" [value]="beoszt.value">{{ beoszt.label }}</option>
+            </select>
+        </label>
+        <button>Mentés</button>
+      </form>
+</div>

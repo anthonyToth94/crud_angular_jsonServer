@@ -1,57 +1,23 @@
 table{
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    margin-top:20px;
-    width:100%;
+  margin-top:20px;
+  width:100%;
 
-    border-collapse: collapse;
-    background-color: rgb(92, 77, 148);
-    color:white;
+  border-collapse: collapse;
+  background-color: rgb(92, 77, 148);
+  color:white;
 }
 
 thead{
-    width:100%;
-    background-color: #f2f2f2;
-    color:black;
+  width:100%;
+  background-color: #f2f2f2;
+  color:black;
 }
 
 table th, table td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
+padding: 8px;
+text-align: left;
+border-bottom: 1px solid #ddd;
 }
-
-/* FORM */
-.formOuter{
-  display:flex;
-  justify-content: center;
-}
-
-form {
-  margin-top:20px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding:20px;
-  border:1px solid black;
-  background-color: rgb(104, 141, 146);
-}
-
-.error {
-  color: rgb(199, 33, 33);
-}
-
-form h3 {
-  text-align: center;
-  width: 100%;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="number"] {
-  padding: 10px;
-  font-size: 16px;
-}
-

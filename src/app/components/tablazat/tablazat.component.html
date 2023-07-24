@@ -24,27 +24,6 @@
             </tr>
         </tbody>
     </table>
-    
-    <div class="formOuter" *ngIf="updateFormMegjelenese">
-        <form [formGroup]="szerkesztesForm" (submit)="modositasForm()">
-            <h3>Módosítás</h3>
-       
-            <label for="keresztnev">Keresztnév:</label>
-            <input type="text" id="keresztnev" formControlName="keresztnev">
 
-            <label for="vezeteknev">Email:</label>
-            <input type="text" id="email" formControlName="email">
-          
-             <!-- Új sor-->
-            <label>
-                Beosztás<span>*</span>:
-                <select formControlName="position">
-                <option *ngFor="let beoszt of atvettObject" [value]="beoszt.value">{{ beoszt.label }}</option>
-                </select>
-            </label>
-           
-          
-            <button>Mentés</button>
-          </form>
-    </div>
+    <app-frissites [idFromTablazat]="modositasFormId" [userFromTablazat]="foundUser" [selectFromTablazat]="atvettObject" [triggerFromTablazat]="updateFormMegjelenese" (isEditableChange)="onEditModeChange($event)"></app-frissites>
 </div>

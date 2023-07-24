@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, Subject, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { UserModel } from '../models/user.model';
 import { IBeosztas } from '../models/beosztas.model';
 
@@ -14,6 +14,12 @@ export class UserService {
   private beosztasURL = 'http://localhost:3000/beosztas';
 
   constructor(private http: HttpClient) { }
+
+  //
+  private _refreshRequired = new Subject<void>();
+  get RefreshRequired(){
+    return this._refreshRequired;
+  }
 
   getBeosztas(): Observable<IBeosztas[]> {
     //Hibakezelést kihoztam a komponensből a servicebe, hogy ne kelljen mindenhol kezelni. 
@@ -31,12 +37,20 @@ export class UserService {
   }
 
   addUser(user: UserModel): Observable<UserModel> {
-    return this.http.post<UserModel>(this.usersURL, user);
+    return this.http.post<UserModel>(this.usersURL, user).pipe(
+      tap( () =>{
+        this.RefreshRequired.next();
+      }
+    ));;
   }
 
   updateUser(id: number, user: UserModel): Observable<UserModel> {
     const url = `${this.usersURL}/${id}`;
-    return this.http.put<UserModel>(url, user);
+    return this.http.put<UserModel>(url, user).pipe(
+      tap( () =>{
+        this.RefreshRequired.next();
+      }
+    ));
   }
 
   deleteUser(id: number): Observable<void> {
@@ -44,7 +58,7 @@ export class UserService {
     return this.http.delete<void>(url);
   }
 
-  getUserById(id: number): Observable<UserModel> {
+  getUserById(id: string): Observable<UserModel> {
     const url = `${this.usersURL}/${id}`;
     return this.http.get<UserModel>(url);
   }

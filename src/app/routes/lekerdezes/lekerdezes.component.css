@@ -5,6 +5,8 @@
     
     padding:10px;
     height:100%;
+
+    background-color: rgb(143, 167, 168);
 }
 
 app-urlap{
@@ -24,5 +26,29 @@ app-tablazat{
 
     width:70%;
     height:100%;
-    background-color: rgb(143, 167, 168);
+  
+}
+
+@media (max-width: 1300px) {
+    .container{
+        flex-direction: column;
+        width:100%;
+    }
+
+    app-urlap{
+        width:80%;
+    }
+    app-tablazat{
+        width:100%;
+    }
+  }
+
+  
+@media (max-width: 445px) {
+    app-urlap{
+        width:100%;
+    }
+    app-tablazat{
+        width:100%;
+    }
 }

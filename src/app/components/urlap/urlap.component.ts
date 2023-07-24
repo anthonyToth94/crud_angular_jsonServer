@@ -1,47 +1,12 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators, ValidatorFn,AsyncValidatorFn, FormArray } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Subscription, catchError, delay, map, of, switchMap, tap } from 'rxjs';
+import { Subscription, tap } from 'rxjs';
 import { UserModel } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 import { v4 as uuidv4, validate } from 'uuid';
 import { IBeosztas } from 'src/app/models/beosztas.model';
-
-function rangeValidator(min: number, max: number): ValidatorFn{
-  return ( (control) =>{
-    //Ha nincs hiba
-    if(control.value >= min && control.value <= max)
-    {
-      return null;
-    }
-    //Ha objektum
-    return {
-      range:{
-        min: min,
-        max: max,
-        actual: control.value
-      }
-    }
-  })
-}
-
-function emailTakenValidator(http:HttpClient) : AsyncValidatorFn{
-  return (control) =>{
-   return of(control.value).pipe(
-    delay(500),
-    switchMap(email => http.get("https://kodbazis.hu/api/is-email-taken",{
-      params:{
-        email: control.value
-      }
-    }).pipe(
-      map( () => null),
-      catchError( () => of({
-        taken: true
-      }))
-    ))
-   )
-  }
-}
+import { CustomValidators } from '../../validators/custom-validators';
 
 @Component({
   selector: 'app-urlap',
@@ -60,27 +25,27 @@ export class UrlapComponent implements OnInit, OnDestroy {
   
   //tablazatnak
   @Output() passzoltErtek : EventEmitter<boolean> = new EventEmitter<boolean>();
-  frissites : boolean = false;
+  frissites : any = false;
 
   formErrorMessage: boolean = false;
 
   //Konstruktór kezdő adatok tápálása (példányosítás, osztályváltozó inicializálás), inicializálunk oninitben meg futtatjuk a dolgokat
   constructor (private http: HttpClient, private formBuilder : FormBuilder, private userService : UserService){ 
 
-    
+
   //FormBuilder összerakja láthatóbbá a formGroupokat és itt validáljuk
     this.urlapForm = this.formBuilder.group({
-      firstName: ['', this.nameValidator],
-      lastName: ['', this.nameValidator],
-      age: ['', rangeValidator(18, 100)],
-      email: ['', [Validators.required, Validators.email], emailTakenValidator(this.http)],
+      firstName: ['', CustomValidators.nameValidator],
+      lastName: ['', CustomValidators.nameValidator],
+      age: ['', CustomValidators.rangeValidator(18, 100)],
+      email: ['', [Validators.required, Validators.email], CustomValidators.emailTakenValidator(this.http)],
       gender: [''], 
       position: ["Designer", Validators.required], 
       
       //Belső Group valamiért nem működik --- HELP ???? -
       street: ['', Validators.required],
       city: ['', Validators.required],
-      zip: ['', [Validators.required, rangeValidator(1000, 9999)]],
+      zip: ['', [Validators.required, CustomValidators.rangeValidator(1000, 9999)]],
 
       skills: this.formBuilder.array([]),
 
@@ -88,12 +53,7 @@ export class UrlapComponent implements OnInit, OnDestroy {
     });
   }
   
-  //Ismétlődő validátorok
-    nameValidator = Validators.compose([
-      Validators.required,
-      Validators.minLength(0),
-      Validators.maxLength(20)
-    ]);
+  
 
   //Életcikusa: Komponens inicializálásánál jön létre és egyből lefut osztály példányosítás után lép életbe nem ugy mint a consturctor
   ngOnInit() : void {
@@ -186,12 +146,16 @@ export class UrlapComponent implements OnInit, OnDestroy {
       (response) => {
         //Kiveszem a Kitöltés szükséges ...
         this.formErrorMessage = false;
+        this.frissites = true;
 
         //Átadom az értéket az anyának és onnan bele a táblázatba
-        this.passzoltErtek.emit(this.frissites = true);
-        console.log(this.frissites);
+        this.passzoltErtek.emit(this.frissites);
+
+        console.log(this.frissites +" Első pont");
         //resetelek mindent alapértelmezettre
         this.urlapForm.reset();
+        //Törölni az adatok a skills tömbből
+        this.skills.clear();
         //Futás időben kifejezetten 1 elemet frissít
         this.urlapForm.patchValue({ position: 'Designer' })
 
