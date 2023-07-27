@@ -1,4 +1,5 @@
 <div class="container">
-    <app-urlap (passzoltErtek)="parentFunction($event)" (beosztasKuldese)="parentFunction2($event)"></app-urlap>
-    <app-tablazat [atvettErtek]="passzoltErtek" [atvettObject]="passzoltObject"></app-tablazat>
+    <app-urlap [modositasraVaro]="modositaniKivantUser" [booleanUpdate]="booleanUpdateForm" (visszaKuldBooleanUpdate)="visszaKuldBooleanUpdateEvent($event)" (passzoltErtek)="parentFunction($event)" (beosztasKuldese)="parentFunction2($event)" ></app-urlap>
+
+    <app-tablazat [atvettErtek]="passzoltErtek" [atvettObject]="passzoltObject" [updateFormMegjelenese]="booleanUpdateForm"(modositandoKuldese)="modositastAtveszemFunction($event)" (booleanUpdateFormnak)="booleanUpdateFormnakFunction($event)"></app-tablazat>
 </div>

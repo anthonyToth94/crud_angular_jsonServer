@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges, EventEmitter, Output } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { map, tap } from 'rxjs';
 import { IBeosztas } from 'src/app/models/beosztas.model';
@@ -20,18 +20,24 @@ export class TablazatComponent implements OnInit{
   //Globális változók
   @Input() 
   atvettErtek: any ;
-  //Select értékek
+
+  //Select értékek 
   @Input()
   atvettObject: IBeosztas[] = [];
 
   //Ide töltöm be az adatokat
   adatok : any[] = [];
 
-  updateFormMegjelenese : boolean = false;
+  modositasFormId : string | undefined;
 
   //Ezt rakom bele a modosítasFormba
-  modositasFormId : string | undefined;
+  @Output() modositandoKuldese = new EventEmitter ();
   foundUser : any = {};
+
+  //Ezzel modosítom, hogy Szerkesztés van-e vagy Hozzáadás
+  @Output() booleanUpdateFormnak = new EventEmitter ();
+  @Input() updateFormMegjelenese : boolean = false;
+
   constructor( private userService : UserService){
   
   }
@@ -43,8 +49,9 @@ export class TablazatComponent implements OnInit{
     });
   }
 
+  //BooleanUpdateFormot felülírom a kapott értékkel
   onEditModeChange(isEditable: boolean) {
-    console.log("Miért nem futok le");
+    console.log("Vissza írom a booleant, hogy tudjak modosítani ismét");
     this.updateFormMegjelenese = isEditable;
   }
 
@@ -93,7 +100,8 @@ export class TablazatComponent implements OnInit{
       (response) => {
         //Futási időben adatot változtat
         this.modositasFormId = response.id;
-        this.updateFormMegjelenese = true;
+        this.booleanUpdateFormnak.emit(this.updateFormMegjelenese = true)
+        this.modositandoKuldese.emit(this.foundUser);
       },
       (error) => {
         console.error(error);

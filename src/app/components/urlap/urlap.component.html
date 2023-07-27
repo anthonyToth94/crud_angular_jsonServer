@@ -134,6 +134,7 @@
                     <a id="deleteGomb" (click)="removeSkills(i)"> X </a>
                 </li>
             </ul>
+            <div *ngIf="keszsegekErrorMessage" class="error">Kérem töltse ki a mezőt!</div>    
             <div>
                 <input type="text" #inputField>
             </div>
@@ -148,7 +149,8 @@
          <!-- hibák -->
 
         <div *ngIf="formErrorMessage" class="error">Kérem töltse ki a mezőket!</div>
-        <button type="submit" (click)="addUserEvent()">
+        <button type="submit" (click)="onSubmit()">
             Küldés
         </button>
+        <button *ngIf="booleanUpdate" (click)="reloadPage()">Vissza</button>
     </form>

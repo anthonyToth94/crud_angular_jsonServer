@@ -1,47 +1,76 @@
 {
   "users": [
     {
-      "id": "2a12187a-c23f-43c1-9812-f4e6dff6f212",
-      "keresztnev": "Péter",
-      "email": "peterkovacs@example.com",
-      "beosztas": "Tesztelő"
-    },
-    {
-      "id": "1a12127a-c23f-43c1-9812-f4e6dff6f252",
-      "keresztnev": "Antal",
-      "vezeteknev": null,
-      "eletkor": null,
-      "email": "annatoth@example.com",
+      "id": "5d05a901-6aeb-4e35-b66d-0272b8e4987f",
+      "keresztnev": "Anna",
+      "vezeteknev": "Nagy",
+      "eletkor": 25,
+      "email": "annanagy@example.com",
       "beosztas": "Tesztelő",
-      "nem": null,
-      "utca": null,
-      "varos": null,
-      "iranyitoszam": null,
-      "keszsegek": []
-    },
-    {
-      "id": "2a12187a-c23f-43c1-9812-f4e6dff6f212",
-      "keresztnev": "Péter",
-      "vezeteknev": "Kovács",
-      "eletkor": 32,
-      "email": "peterkovacs@example.com",
-      "beosztas": "Tesztelő",
-      "nem": "Férfi",
-      "utca": "Petőfi utca 2.",
-      "varos": "Debrecen",
-      "iranyitoszam": 2222,
+      "nem": "Nő",
+      "utca": "Kossuth utca 10.",
+      "varos": "Budapest",
+      "iranyitoszam": 1111,
       "keszsegek": [
-        "Java",
-        "JUnit",
-        "Selenium",
-        "Git"
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Angular"
       ]
     },
     {
-      "id": "ef6aa25d-0f16-4612-9ea7-a31278e59302",
-      "keresztnev": "Antal",
-      "email": "test@gmail.com",
-      "beosztas": "Designer"
+      "id": "1b49953b-2c11-4f31-a029-3d5f434c8d3a",
+      "keresztnev": "Éva",
+      "vezeteknev": "Horváth",
+      "eletkor": 35,
+      "email": "evahorvath@example.com",
+      "beosztas": "Grafikus",
+      "nem": "Nő",
+      "utca": "Ady Endre utca 15.",
+      "varos": "Győr",
+      "iranyitoszam": 9024,
+      "keszsegek": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Node.js",
+        "React",
+        "MongoDB"
+      ]
+    },
+    {
+      "id": "e226ab42-7db9-41b2-ae1f-25f60d4ebf57",
+      "keresztnev": "asd",
+      "vezeteknev": "asd",
+      "eletkor": 20,
+      "email": "d@gmail.com",
+      "beosztas": "Grafikus",
+      "nem": "Férfi",
+      "utca": "asd",
+      "varos": "asd",
+      "iranyitoszam": 2000,
+      "keszsegek": [
+        "asd",
+        "asds",
+        "xDXDD"
+      ]
+    },
+    {
+      "id": "fb1d5c7f-8571-468c-b93d-a7dbc4933ac2",
+      "keresztnev": "Tamás",
+      "vezeteknev": "Kiss",
+      "eletkor": 28,
+      "email": "tamaskiss@example.com",
+      "beosztas": "Designer",
+      "nem": "Férfi",
+      "utca": "Rákóczi út 5.",
+      "varos": "Szeged",
+      "iranyitoszam": 6720,
+      "keszsegek": [
+        "Java",
+        "Spring Boot",
+        "SQL"
+      ]
     }
   ],
   "beosztas": [

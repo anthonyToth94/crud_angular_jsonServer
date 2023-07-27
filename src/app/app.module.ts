@@ -10,7 +10,6 @@ import { TablazatComponent } from './components/tablazat/tablazat.component';
 import { LekerdezesComponent } from './routes/lekerdezes/lekerdezes.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { FrissitesComponent } from './components/frissites/frissites.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,7 @@ import { FrissitesComponent } from './components/frissites/frissites.component';
     UrlapComponent,
     TablazatComponent,
     LekerdezesComponent,
-    FrissitesComponent,
+
   ],
   imports: [
     BrowserModule,
