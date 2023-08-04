@@ -1,0 +1,41 @@
+.container {
+  width: 100%;
+  margin: auto;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.outer {
+  margin-top: 20px;
+  width: 100%
+}
+
+.outer h1 {
+  text-align: center;
+}
+
+#external-events {
+  top: 20px;
+  left: 20px;
+  width: 200px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  background: #eee;
+  text-align: center;
+}
+
+#external-events .fc-event {
+  cursor: move;
+  margin: 3px 0;
+}
+
+#calendar-container {
+  position: relative;
+  z-index: 1;
+  margin-left: 200px;
+}
+
+input {
+  width: 100%;
+}

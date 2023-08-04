@@ -1,0 +1,99 @@
+<div id='external-events'>
+            <p>
+                <strong>Új esemény</strong>
+            </p>
+            <input type="text" [(ngModel)]="newEventName" id="newEventNameInput">
+            <div class="alert alert-danger" role="alert" *ngIf="errorMessage.length > 0">
+                {{ errorMessage }}
+            </div>
+            <button (click)="addNewEvent()">Hozzáad</button>
+            <!--            
+                <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+                    <div class='fc-event-main'>Uj esemeny</div>
+                </div>
+            -->
+</div>
+
+  ngOnInit(): void {
+    //FullCalendarben azért használjuk, hogy az external-events tartalma fc-event elemeket húzni lehessen
+    let draggableEl = document.getElementById('external-events') as HTMLElement;
+
+    //Új Draggable példány létrehozása az exetrnal-dragging funkcióhoz  
+    //2 paraméter ->  Draggable( amin keresztül az eseményeket lehet huzni , { object } )  object: itemSelector amiket húzhatóvá akarsz tenni, függvény eventdata: esemény attributuma beállítása és vissza adása
+    new Draggable(draggableEl, {
+      itemSelector: '.fc-event',
+      eventData: function (eventEl: any) {
+        //test console.log(eventEl);
+        return {
+          title: eventEl.innerText,
+          //start: '2023-07-30T10:00:00', // A kezdési időpont
+          //end: '2023-07-30T12:00:00',    // A befejezési időpont
+          backgroundColor: '#FF5733' // A háttérszín HEX kódja
+        };
+
+      }
+    });
+
+  }
+
+ //Új eseménynél hozzá adhatunk eventeket 
+  addNewEvent() {
+    //Hova akarunk elemet hozzáadni?
+    const externalEventsContainer = document.getElementById('external-events');
+
+    //Ha létezik
+    if (externalEventsContainer && this.newEventName != "") {
+
+      const newEventDiv = document.createElement('div');
+      newEventDiv.className = 'fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event';
+      const newEventMainDiv = document.createElement('div');
+      newEventMainDiv.className = 'fc-event-main';
+      newEventMainDiv.innerText = this.newEventName;
+
+      newEventDiv.appendChild(newEventMainDiv);
+      externalEventsContainer.appendChild(newEventDiv);
+    } else {
+      this.setErrorMessage("Töltse ki a mezőt");
+    }
+
+    this.newEventName = "";
+  }
+
+
+
+    //Esemény hozzáadása
+  handleDateSelect(selectInfo: DateSelectArg) {   //importálni kell
+    const title = prompt('Írd be az új eseményt');
+    const calendarApi = selectInfo.view.calendar;  //Ezzel kapod meg a belső infokat
+
+    console.log(calendarApi);
+    console.log(selectInfo);
+
+    calendarApi.unselect(); // Kitörli, hogy ne legyen semmi selectálva
+
+    if (title) {
+      calendarApi.addEvent({    //Beépített function
+        id: createEventId(),         //Mi amit alkottunk eventId
+        title: title,                  //Ezt fogod megadni promptal
+        start: selectInfo.startStr,     // "2023-07-13"
+        end: selectInfo.endStr,         // ""2023-07-14"
+        allDay: selectInfo.allDay       // true / false
+      });
+    }
+  }
+
+
+
+ .pipe(
+          tap((adatok) => {
+            /* ebbe nem viszi be ?
+            this.calendarAdatok = adatok;
+            console.log(this.calendarAdatok); //Vizsgál
+            
+            // Itt frissítsd a calendarOptions.events értékét is
+            */
+            this.calendarOptions.events = adatok;
+          })
+        )
+
+  

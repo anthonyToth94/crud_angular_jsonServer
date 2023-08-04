@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="outer">
+        <h1>Naptár</h1>
+        <full-calendar [options]="calendarOptions"></full-calendar>
+
+        <h5>Esemény vagy Időbeosztás</h5>
+        <div><button [ngClass]="{ 
+            'btn': true, 'btn-success': colorForEvents, 'btn-secondary': !colorForEvents }"
+                (click)="eventHandler()">Esemény</button>
+            <button [ngClass]="{ 
+            'btn': true,'btn-secondary': colorForEvents, 'btn-success': !colorForEvents }"
+                (click)="timelineHandler()">Időbeosztás</button>
+        </div>
+    </div>
+
+</div>

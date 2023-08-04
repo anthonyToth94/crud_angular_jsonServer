@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="outer">
+        <h1>Profilom</h1>
+        <!-- 
+        <p>Kép</p>
+        -->
+        <p>Username: <span>{{ activeUser.username}}</span></p>
+        <p>Beosztás: {{ userRoleName }}</p>
+        <form [formGroup]="roleForm">
+            <label>
+                <select formControlName="roles">
+                    <option *ngFor="let role of roles;" [value]="role.id">{{ role.name }}
+                    </option>
+                </select>
+            </label>
+            <div *ngIf="formErrorMessage" class="error">Kérem töltse ki a mezőket!</div>
+            <button class="btn btn-success" type="submit" (click)="updateRole()">
+                Küldés
+            </button>
+        </form>
+        <!-- 
+        <div><span>Értesítések 0</span></div>
+        <div><button>Metting hívás</button></div>
+        <div><span>Meetingek: 0</span></div>
+        <div>
+            <h5>Ismerősök:</h5>
+            <div><span>Online: 0</span></div>
+            <div><span>Offline: 0</span></div>
+        </div>
+        -->
+        <button class="btn btn-danger" (click)="logout()">Kijelentkezés</button>
+    </div>
+</div>

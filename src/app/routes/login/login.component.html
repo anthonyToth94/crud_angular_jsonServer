@@ -1,0 +1,31 @@
+<div class="container">
+    <form [formGroup]="login" (ngSubmit)="logindata(login)">
+        <h3>Bejelentkezés</h3>
+        <div class="form-group">
+            <label>Felhasználónév</label>
+            <input type="text" formControlName="username" class="form-control mb-3 mt-3"
+                placeholder="Írd be a felhasználód" />
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="getError('username', 'required')">
+            Töltsd ki a mezőt!
+        </div>
+
+        <div class="form-group">
+            <label>Jelszó</label>
+            <input type="password" formControlName="password" class="form-control mb-3 mt-3"
+                placeholder="Írd be a jelszavad" />
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="getError('password', 'required')">
+            Töltsd ki a mezőt!
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="errorMessage.length > 0">
+            {{ errorMessage }}
+        </div>
+        <span>Nincs még felhasználód? </span>
+        <a [routerLink]="['/regisztracio']">Regisztráció</a>
+        <br />
+        <button type="submit" class="btn btn-success">Bejelentkezés</button>
+    </form>
+</div>
+
+<router-outlet></router-outlet>

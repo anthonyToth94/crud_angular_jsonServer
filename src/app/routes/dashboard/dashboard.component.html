@@ -1,0 +1,7 @@
+<!-- Ezt muszáj volt ide rakni, különben egy üres HTML jött be hibával -->
+<div *ngIf="_authService.isLoggedIn">
+    <div class=" container">
+        <app-profile [activeUser]=" _authService.user"></app-profile>
+        <app-calendar [activeUser]=" _authService.user"></app-calendar>
+    </div>
+</div>

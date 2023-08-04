@@ -1,0 +1,76 @@
+{
+  "users": [
+    {
+      "id": "2f486174-b56a-57e1-1c1d-faac16686sss",
+      "username": "user1",
+      "password": "password1",
+      "roleId": "1",
+      "calendarId": "1"
+    },
+    {
+      "id": "4f486794-c29a-41e4-6f2d-caec26686ccc",
+      "username": "user2",
+      "password": "password2",
+      "roleId": "2",
+      "calendarId": "2"
+    }
+  ],
+  "calendars": [
+    {
+      "id": "1",
+      "name": "Naptár 1",
+      "eventsId": "1",
+      "timelineId": "1"
+    },
+    {
+      "id": "2",
+      "name": "Naptár 2",
+      "eventsId": "2",
+      "timelineId": "2"
+    }
+  ],
+  "events": [
+    {
+      "id": "1",
+      "title": "Esemény 1",
+      "start": "2023-08-03T10:00:00",
+      "end": "2023-08-03T12:00:00",
+      "backgroundColor": "green"
+    },
+    {
+      "id": "2",
+      "title": "Esemény 2",
+      "start": "2023-07-25T14:00:00",
+      "end": "2023-07-25T16:00:00",
+      "backgroundColor": "red"
+    }
+  ],
+  "timeline": [
+    {
+      "id": "1",
+      "title": "Nem érek rá",
+      "start": "2023-08-03T10:00:00",
+      "end": "2023-08-03T12:00:00",
+      "display": "background",
+      "backgroundColor": "green"
+    },
+    {
+      "id": "2",
+      "title": "Ráérek",
+      "start": "2023-07-25T14:00:00",
+      "end": "2023-07-25T16:00:00",
+      "display": "background",
+      "backgroundColor": "red"
+    }
+  ],
+  "roles": [
+    {
+      "id": "1",
+      "name": "Fejlesztő"
+    },
+    {
+      "id": "2",
+      "name": "Mentor"
+    }
+  ]
+}

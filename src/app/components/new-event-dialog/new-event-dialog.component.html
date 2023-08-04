@@ -1,0 +1,17 @@
+<!-- Teendő, hogy amikor nincs kitöltve a mező ne engedje meg Hozzáadni és Divekben adjon errorokat-->
+<div class="container">
+    <form [formGroup]="eventForm">
+        <h2>Új esemény hozzáadása</h2>
+        <div class="form-group">
+            <label for="eventName">Esemény neve:</label>
+            <input type="text" formControlName="eventName" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="backgroundColor">Háttérszín:</label>
+            <input type="color" formControlName="backgroundColor" class="form-control">
+        </div>
+        <button (click)="onSubmit()" class="btn btn-success">Hozzáad</button>
+        <button (click)="backEvent()" class="btn btn-secondary">Back</button>
+    </form>
+</div>
